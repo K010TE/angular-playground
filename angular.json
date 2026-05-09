@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "conceitos-basicos": {
+    "angular-playground": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/conceitos-basicos",
+            "outputPath": "dist/angular-playground",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -64,10 +64,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "conceitos-basicos:build:production"
+              "buildTarget": "angular-playground:build:production"
             },
             "development": {
-              "buildTarget": "conceitos-basicos:build:development"
+              "buildTarget": "angular-playground:build:development"
             }
           },
           "defaultConfiguration": "development"
