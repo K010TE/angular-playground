@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { ListaComprasComponent } from './lista-compras/lista-compras.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 @Component({
   selector: 'app-root',
-  imports: [ListaComprasComponent],
+  imports: [WelcomeComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
