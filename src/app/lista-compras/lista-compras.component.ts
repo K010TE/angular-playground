@@ -14,11 +14,15 @@ export class ListaComprasComponent {
 
   addItem() {
     
-    let itemList = new ItemList();
-    itemList.name = this.item();
-    itemList.id = this.list().length + 1;
-    this.list.update(items => [...items, itemList]);
-    this.item.set('');
+    if (this.item() !== '') {
+
+      let itemList = new ItemList();
+      itemList.name = this.item();
+      itemList.id = this.list().length + 1;
+      this.list.update(items => [...items, itemList]);
+      this.item.set('');
+    }
+
 
   }
 
