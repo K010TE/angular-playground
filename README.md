@@ -1,56 +1,37 @@
-# 🚀 Angular 19+ Playground
+# 🚀 Angular Playground
 
-Este repositório é um laboratório prático e um guia de documentação dedicado ao estudo das arquiteturas e features modernas introduzidas no **Angular 19+**. O foco principal é a transição para um paradigma reativo, de alta performance e livre de módulos legados.
+Este projeto é um pequeno laboratório em Angular 19+ para testar recursos modernos do framework. Ele inclui uma página de boas-vindas com navegação para duas demos:
 
----
+- **Calculadora** — um componente reativo para operações simples.
+- **Lista de Compras** — um app leve para adicionar, marcar e remover itens.
 
-## 🧠 Conceitos Arquiteturais Documentados
+## 🧠 O que este projeto demonstra
 
-Durante o desenvolvimento deste laboratório, os seguintes paradigmas foram aplicados e consolidados:
+- **Roteamento básico** usando `RouterOutlet` e rotas nomeadas.
+- **Componentes standalone** com suas próprias importações.
+- **Uso de Signals** para gerenciamento de estado local.
+- **Formulários** com `FormsModule`.
+- **Layouts leves** e experiência de navegação intuitiva.
 
-### 1. Standalone Components (Fim do `app.module.ts`)
-A partir da versão 19, o framework tornou o `standalone: true` o padrão absoluto e implícito. 
-* **O que muda:** Componentes agora são autossuficientes. Eles importam suas próprias dependências (como `FormsModule`) diretamente no decorator `@Component`, eliminando a necessidade de um módulo global gerenciador. Isso aproxima o Angular de bibliotecas modernas e simplifica o fluxo do projeto.
+## 📁 Estrutura principal
 
-### 2. Reatividade com Signals vs. Zone.js
-A transição de variáveis clássicas para **Signals** resolve um gargalo histórico de performance no Angular.
-* **O Problema Antigo:** O `Zone.js` monitorava toda a árvore de componentes. Qualquer clique disparava uma checagem global para atualizar a tela.
-* **A Solução (Signals):** Ao empacotar o estado em um `signal()`, criamos uma reatividade cirúrgica. Quando atualizamos um valor via `.set()`, o Angular atualiza **apenas** o fragmento exato do HTML (DOM) onde aquele dado é renderizado, sem checar o resto da página.
+- `src/app/app.routes.ts` — configuração das rotas.
+- `src/app/welcome/` — página inicial com cards de acesso.
+- `src/app/calculadora/` — demonstração da calculadora.
+- `src/app/lista-compras/` — demonstração da lista de compras.
 
-### 3. Separação de Responsabilidades (Lógica de Negócio vs. Apresentação)
-O HTML deve ser declarativo e focado exclusivamente na estrutura. Expressões matemáticas ou condicionais complexas poluem o template e dificultam a manutenção.
-* **Abordagem Ideal:** Utilizar Sinais Computados (`computed()`) no TypeScript para avaliar regras (ex: `mostrarResultado = computed(() => this.resultado() !== null);`) e usar o novo Control Flow (`@if`) no HTML apenas para decidir a renderização, mantendo a camada de visualização perfeitamente limpa e delegando a inteligência para a classe.
+## 🚀 Como executar
 
----
+1. Instale as dependências:
+   ```bash
+   npm install
+   ```
+2. Inicie a aplicação:
+   ```bash
+   npm start
+   ```
+3. Abra o navegador em `http://localhost:4200/`.
 
-## 📦 Módulo Desenvolvido: Calculadora Reativa
+## 📌 Observações
 
-Um componente de calculadora estruturado inteiramente sob o paradigma reativo do Angular moderno, servindo como prova de conceito para os temas estudados.
-
-### Destaques Técnicos da Implementação:
-- **Blindagem de Nulos:** Uso de *Type Unions* (`signal<number | null>`) e do operador de coalescência nula (`??`) para tratamento seguro de inputs vazios no TypeScript, evitando o uso problemático do *Non-Null Assertion* (`!`).
-- **UX e Acessibilidade:** Submissão do formulário escutando eventos nativos de teclado (tecla Enter) utilizando a diretiva `(ngSubmit)` acoplada ao sistema de Sinais.
-- **Novo Control Flow:** Uso da sintaxe `@if` nativa no template, substituindo a antiga e verbosa diretiva `*ngIf`.
-
----
-
-## 🚀 Como executar este projeto
-
-1. Certifique-se de ter o [Node.js](https://nodejs.org/) e o [Angular CLI](https://angular.dev/tools/cli) (v19+) instalados.
-2. Clone este repositório:
-```bash
-git clone [https://github.com/SEU_USUARIO/NOME_DO_REPOSITORIO.git](https://github.com/SEU_USUARIO/NOME_DO_REPOSITORIO.git)
-```
-3. Acesse a pasta do projeto:
-```bash
-cd NOME_DO_REPOSITORIO
-```
-4. Instale as dependências essenciais:
-```bash
-npm install
-```
-5. Inicie o servidor de desenvolvimento local:
-```bash
-ng serve
-```
-6. Abra o navegador e acesse `http://localhost:4200/`.
+Este repositório serve como um ambiente de aprendizado e experimentação com o Angular moderno, não como um produto final. O foco é entender a migração para componentes standalone, rotas simples e a prática de sinais reativos.
